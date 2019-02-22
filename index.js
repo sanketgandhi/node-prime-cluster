@@ -1,6 +1,8 @@
 const express = require('express');
 const isPrime = require('./is-prime');
 const app = express();
+const workerFarm = require('worker-farm');
+const worker = workerFarm(require.resolve('./worker.js'));
 
 app.get('/', (req, res) => {
     const primes = [];
